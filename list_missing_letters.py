@@ -13,16 +13,6 @@ def listMissingLetters(s):
     @return: A string alphabetically listing all the letters missing
              from the input string.
     """
-    a = ord("a")
-    alphabet = list("abcdefghijklmnopqrstuvwxyz")
-
-    # Every letter in the input string is removed from our list
-    # of the entire alphabet.
-    for letter in s:
-        letter_index = ord(letter.lower()) - a
-        # Non-letters are ignored
-        if letter_index >= 0 and letter_index < 26:
-            alphabet[letter_index] = ""
-
-    #The remaining letters are returned as a single string.
-    return "".join(alphabet)
+    import string
+    return filter(lambda c: c not in s.lower(),
+                  string.ascii_lowercase)
